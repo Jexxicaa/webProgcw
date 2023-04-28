@@ -1,56 +1,76 @@
-
 function addEntry(event) {
-    event.preventDefault();
-    console.log("addEntry function called"); // Check if the function is being called
-    
-    // Gets whatever is inputted into the text boxes
-    const { date, work, knowledge, competency } = getMessageDetails();
+  event.preventDefault();
 
-    // Creates a new row for the table
-    const table = document.querySelector("#diary");
-    const newRow = table.insertRow(-1);
-    
-    
+  // Get input values
+  const date = document.querySelector("#date-input").value;
+  const work = document.querySelector("#work-input").value;
+  const knowledge = document.querySelector("#knowledge-input").value;
+  const competencies = Array.from(document.querySelectorAll('input[name="competency"]:checked')).map(checkbox => checkbox.value).join(", ");
 
-    // Add data to new row
-    const dateCell = newRow.insertCell(0);
-    const workCell = newRow.insertCell(1);
-    const knowledgeCell = newRow.insertCell(2);
-    const competencyCell = newRow.insertCell(3);
-    const editCell = newRow.insertCell(4);
+  // Create table row
+  const table = document.querySelector("#diary");
+  const rowIndex = table.rows.length;
+  const row = table.insertRow(-1);
+  row.setAttribute("data-index", rowIndex);
 
-    dateCell.textContent = date;
-    workCell.textContent = work;
-    knowledgeCell.textContent = knowledge;
-    competencyCell.textContent = competency;
+  const dateCell = row.insertCell(0);
+  const workCell = row.insertCell(1);
+  const knowledgeCell = row.insertCell(2);
+  const competencyCell = row.insertCell(3);
+  const editCell = row.insertCell(4);
 
+  // Add data to table row
+  dateCell.textContent = date;
+  workCell.textContent = work;
+  knowledgeCell.textContent = knowledge;
+  competencyCell.textContent = competencies;
 
-    
-    //create the edit button
-    const editButton = document.createElement("button");
-    editButton.textContent = "Edit";
-    editButton.addEventListener("click", function() {
-      // Navigate to the edit message page
-      window.location.href = "editMessage.html";
+  // Add edit button
+  const editButton = document.createElement("button");
+  editButton.textContent = "Edit";
+  editButton.addEventListener("click", function() {
+
+    const head = document.querySelector("#heading");
+    head.textContent = "Edit Data:";
+
+    const sub = document.querySelector("#add-entry-button");
+    sub.remove();
+    const editForm = document.querySelector("#editForm");
+    const saveButton = document.createElement("button");
+    saveButton.textContent = "Save Changes";
+    editForm.appendChild(saveButton);
+
+    // Add event listener to the save button
+    saveButton.addEventListener("click", function() {
+      // Get input values
+      const date = document.querySelector("#date-input").value;
+      const work = document.querySelector("#work-input").value;
+      const knowledge = document.querySelector("#knowledge-input").value;
+      const competencies = Array.from(document.querySelectorAll('input[name="competency"]:checked')).map(checkbox => checkbox.value).join(", ");
+
+      // Update table row
+      const rowIndex = row.getAttribute("data-index");
+      const dateCell = table.rows[rowIndex].cells[0];
+      const workCell = table.rows[rowIndex].cells[1];
+      const knowledgeCell = table.rows[rowIndex].cells[2];
+      const competencyCell = table.rows[rowIndex].cells[3];
+      
+      dateCell.textContent = date;
+      workCell.textContent = work;
+      knowledgeCell.textContent = knowledge;
+      competencyCell.textContent = competencies;
+
+      document.querySelector("#new-entry-form").reset();
+      saveButton.remove();
+      editForm.appendChild(sub);
     });
-    // Add the edit button to the edit cell
-    editCell.appendChild(editButton);
 
+  });
+  editCell.appendChild(editButton);
 
-
-    // Clears the type boxes after submitting
-    document.querySelector("#new-entry-form").reset();
-  }
-
-
-function getMessageDetails() {
-    const date = document.querySelector("#date-input").value;
-    const work = document.querySelector("#work-input").value;
-    const knowledge = document.querySelector("#knowledge-input").value;
-    const competency = document.querySelector("#competency-input").value;
-    return { date, work, knowledge, competency };
+  // Reset form
+  document.querySelector("#new-entry-form").reset();
 }
-
 
 function pageLoaded() {
   start();
@@ -60,4 +80,5 @@ function start() {
   const addButton = document.querySelector("#add-entry-button");
   addButton.addEventListener("click", addEntry);
 }
+
 pageLoaded();

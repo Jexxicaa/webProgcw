@@ -15,21 +15,78 @@
       <th>Work Carried Out</th>
       <th>Knowledge/Experience Gained</th>
       <th>Competency</th>
+      <th>Edit Record</th>
     </tr>
 
   </table>
 
-  <form id="new-entry-form">
-    <label for="date-input">Date:</label>
-    <input type="text" id="date-input"><br>
-    <label for="work-input">Work Carried Out:</label>
+  <style>
+    @media print {
+      .no-print {
+        display: none;
+      }
+    }
+    </style>
+  
+  <h2 id="heading" class="no-print">Input data:</h2>
+
+  <form id="new-entry-form" class="no-print">
+    <b><label for="date-input">Date:</label></b>
+    <input type="date" id="date-input"><br>
+    <b><label for="work-input">Work Carried Out:</label></b>
     <input type="text" id="work-input"><br>
-    <label for="knowledge-input">Knowledge/Experience Gained:</label>
+    <b><label for="knowledge-input">Knowledge/Experience Gained:</label></b>
     <input type="text" id="knowledge-input"><br>
-    <label for="competency-input">Competency:</label>
-    <input type="text" id="competency-input"><br>
-    <button type="button" id="add-entry-button">Add Entry</button>
+
+    <b><label>Competency A:</label></b><br>
+    <input type="checkbox" id="competency1" name="competency" value="A1">
+    <label for="competency1">A1</label><br>
+    <input type="checkbox" id="competency2" name="competency" value="A2">
+    <label for="competency2">A2</label><br>
+
+    <b><label>Competency B:</label></b><br>
+    <input type="checkbox" id="competency3" name="competency" value="B1">
+    <label for="competency3">B1</label><br>
+    <input type="checkbox" id="competency4" name="competency" value="B2">
+    <label for="competency4">B2</label><br>
+    <input type="checkbox" id="competency5" name="competency" value="B3">
+    <label for="competency5">B3</label><br>
+    
+    <b><label>Competency C:</label></b><br>
+    <input type="checkbox" id="competency6" name="competency" value="C1">
+    <label for="competency6">C1</label><br>
+    <input type="checkbox" id="competency7" name="competency" value="C2">
+    <label for="competency7">C2</label><br>
+    <input type="checkbox" id="competency8" name="competency" value="C3">
+    <label for="competency8">C3</label><br>
+    <input type="checkbox" id="competency9" name="competency" value="C4">
+    <label for="competency9">C4</label><br>
+
+    <b><label>Competency D:</label></b><br>
+    <input type="checkbox" id="competency10" name="competency" value="D1">
+    <label for="competency10">D1</label><br>
+    <input type="checkbox" id="competency11" name="competency" value="D2">
+    <label for="competency11">D2</label><br>
+    <input type="checkbox" id="competency12" name="competency" value="D3">
+    <label for="competency12">D3</label><br>
+ 
+    <b><label>Competency E:</label></b><br>
+    <input type="checkbox" id="competency13" name="competency" value="E1">
+    <label for="competency13">E1</label><br>
+    <input type="checkbox" id="competency14" name="competency" value="E2">
+    <label for="competency14">E2</label><br>
+    <input type="checkbox" id="competency15" name="competency" value="E3">
+    <label for="competency15">E3</label><br>
+    <input type="checkbox" id="competency16" name="competency" value="E4">
+    <label for="competency16">E4</label><br>
+    <input type="checkbox" id="competency17" name="competency" value="E5">
+    <label for="competency17">E5</label><br>
+
+
+    <button type="button" id="add-entry-button">Submit</button>
   </form>
+
+  <div id="editForm"></div>
 
 
 </body>
