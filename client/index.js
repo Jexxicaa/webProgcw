@@ -30,9 +30,11 @@ function addEntry(event) {
   editButton.textContent = "Edit";
   editButton.addEventListener("click", function() {
 
+    //update heading
     const head = document.querySelector("#heading");
     head.textContent = "Edit Data:";
 
+    //removes submit button and replaces it with save button
     const sub = document.querySelector("#add-entry-button");
     sub.remove();
     const editForm = document.querySelector("#editForm");
@@ -60,10 +62,17 @@ function addEntry(event) {
       knowledgeCell.textContent = knowledge;
       competencyCell.textContent = competencies;
 
+      // reset form
       document.querySelector("#new-entry-form").reset();
       saveButton.remove();
       editForm.appendChild(sub);
+
+      //reset heading
+      const head = document.querySelector("#heading");
+      head.textContent = "Input Data:";
     });
+
+  
 
   });
   editCell.appendChild(editButton);
