@@ -19,6 +19,9 @@ table {
     display:none;
   }
 
+  label{
+    cursor: pointer;
+  }
 
 
 
