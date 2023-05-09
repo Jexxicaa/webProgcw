@@ -1,0 +1,72 @@
+[
+    {
+        "id": 1,
+        "date": 1682275200,
+        "work": "Completed marketing campaign for new product launch",
+        "knowledge": "Marketing strategies and tactics",
+        "competencies": "Campaign planning and execution, data analysis, copywriting"
+    },
+    {
+        "id": 2,
+        "date": 1682102400,
+        "work": "Presented quarterly sales report to executive team",
+        "knowledge": "Sales forecasting, data visualization, financial analysis",
+        "competencies": "Presentation skills, data interpretation, communication"
+    },
+    {
+        "id": 3,
+        "date": 1681929600,
+        "work": "Developed new training program for customer service team",
+        "knowledge": "Adult learning principles, training design",
+        "competencies": "Needs assessment, curriculum development, facilitation skills"
+    },
+    {
+        "id": 4,
+        "date": 1681756800,
+        "work": "Conducted market research for potential new product line",
+        "knowledge": "Consumer behavior, survey design, statistical analysis",
+        "competencies": "Research methodology, data collection, data interpretation"
+    },
+    {
+        "id": 5,
+        "date": 1681584000,
+        "work": "Managed project to upgrade company's website",
+        "knowledge": "Web development, user experience design, project management",
+        "competencies": "Team coordination, problem-solving, risk management"
+    },
+    {
+        "id": 6,
+        "date": 1681411200,
+        "work": "Prepared budget proposal for upcoming fiscal year",
+        "knowledge": "Financial analysis, budgeting principles",
+        "competencies": "Data analysis, forecasting, attention to detail"
+    },
+    {
+        "id": 7,
+        "date": 1681238400,
+        "work": "Implemented new software system for inventory management",
+        "knowledge": "Information technology, software implementation",
+        "competencies": "Project planning, problem-solving, training and support"
+    },
+    {
+        "id": 8,
+        "date": 1681065600,
+        "work": "Conducted performance reviews for team members",
+        "knowledge": "Human resources management, performance evaluation",
+        "competencies": "Communication, coaching, feedback delivery"
+    },
+    {
+        "id": 9,
+        "date": 1680892800,
+        "work": "Created social media strategy for brand awareness",
+        "knowledge": "Social media platforms, content marketing, analytics",
+        "competencies": "Strategy development, content creation, data analysis"
+    },
+    {
+        "id": 10,
+        "date": 1680710400,
+        "work": "Collaborated with cross-functional team to launch new product",
+        "knowledge": "Product development, project management, market research",
+        "competencies": "Team coordination, communication, problem-solving"
+    }
+]
