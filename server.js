@@ -1,5 +1,4 @@
 import express from 'express';
-import * as ent from './index.js'
 import * as db from './entries.js';
 
 db.initialise();
