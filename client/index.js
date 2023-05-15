@@ -191,7 +191,7 @@ function editTable(date, work, knowledge, competencies) {
         const head = document.querySelector("#heading");
         head.textContent = "Edit Data:";
     });
-    return { editCell, editButton, row };
+    return { editCell, editButton, row, rowIndex };
 }
 
 /** Use fetch to post a JSON message to the server */
