@@ -9,7 +9,6 @@ function init() {
 
 
 
-
   function showEntries(entries, where) {
     for (const entry of entries) {
       const { date, work, knowledge, competencies } = entry;
@@ -46,6 +45,22 @@ function init() {
       editCell.appendChild(editButton);
       row.appendChild(editCell);
       where.appendChild(row);
+
+      const deleteButton = document.createElement("button");
+      deleteButton.textContent = "Delete";
+      deleteButton.classList.add("no-print");
+
+      // Add event listener for delete button
+      deleteButton.addEventListener("click", () => {
+        deleteEntry(entry);
+      });
+
+      const deleteCell = document.createElement("td");
+      deleteCell.appendChild(deleteButton);
+      row.appendChild(deleteCell);
+      where.appendChild(row);
+
+      entry.row = row;
     }
   }
   
@@ -135,6 +150,19 @@ function init() {
     heading.textContent = "Input Data:";
   }
   
+
+
+
+
+  function deleteEntry(entry) {
+    const row = entry.row;
+    row.parentNode.removeChild(row);
+  }
+
+
+
+
+
   function editEntry(entry, row) {
     // Set input values
     document.querySelector("#date-input").value = entry.date;
@@ -179,8 +207,7 @@ function init() {
       
 
 
-
-
+      
 
       function editTable(date, work, knowledge, competencies) {
       // Create table row
@@ -194,6 +221,7 @@ function init() {
       const knowledgeCell = row.insertCell(2);
       const competencyCell = row.insertCell(3);
       const editCell = row.insertCell(4);
+      
       
       // Add data to table row
       dateCell.textContent = date;
@@ -210,8 +238,6 @@ function init() {
       });
       return { editCell, editButton, row };
       }
-      
-
 
 
 
