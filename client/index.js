@@ -35,6 +35,8 @@ function init() {
       const editCell = document.createElement("td");
       const editButton = document.createElement("button");
       editButton.textContent = "Edit";
+      editButton.classList.add("no-print");
+      
   
       // Add event listener for edit button
       editButton.addEventListener("click", () => {
@@ -202,6 +204,7 @@ function init() {
       // Add edit button
       const editButton = document.createElement("button");
       editButton.textContent = "Edit";
+      editButton.classList.add("no-print");
       editButton.addEventListener("click", () => {
       editEntry(entry, row);
       });
@@ -212,7 +215,7 @@ function init() {
 
 
 
-      
+
       /** Use fetch to post a JSON message to the server */
       async function sendEntries(date, work, knowledge, competencies) {
       const payload = {
@@ -237,3 +240,11 @@ function init() {
       }
       
       init();
+
+
+
+      /*
+      The code all runs fine, thats not an issue.
+      However, the code doesnt reload the edited records when the page is refreshed, it reloads the original records for that row.
+      */
+     
