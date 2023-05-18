@@ -12,7 +12,6 @@ export function getAllEntries (){
 }
 
 //function to add to the array
-
 export function addToArray (date, work, knowledge, competencies){
     entries.push({date,work,knowledge,competencies});
     
