@@ -1,36 +1,41 @@
 import express from 'express';
-import * as db from './entries.js';
+import * as ent from './entries.js';
 
-db.initialise();
+ent.initialise(); // Initialize the entries
 
-const app = express();
-app.use(express.static('client'));
+const app = express(); // Create express app
+app.use(express.static('client')); // allow files from client 
+
+// Start the server
 app.listen(8080);
 console.log('Running on http://localhost:8080 to stop do Ctrl+C');
 
-//root to get entries + add new one
 
+// Route to get entries
 app.get('/entry', gettheentries);
 
 function gettheentries (req,res){
-  res.json(db.getAllEntries());
+  // Retrieve entries from ent and send as json response
+  res.json(ent.getAllEntries());
 }
+
+
+// Route to add a new entry
+app.post('/entries', express.json(), asyncWrap(postEntry));
 
 
 //POST to take whats on client and send to server
-
 async function postEntry(req, res) {
   const { date, work, knowledge, competencies } = req.body;
-  const entry = await db.addToArray( date, work, knowledge, competencies );
-  res.json(entry);
+  const entry = await ent.addToArray( date, work, knowledge, competencies ); // Add the entry to ent
+  res.json(entry);// Send added entry as JSON
 }
 
+// Wrap to handle async route handlers
 function asyncWrap(f) {
   return (req, res, next) => {
     Promise.resolve(f(req, res, next))
       .catch((e) => next(e || new Error()));
   };
 }
-
-app.post('/entries', express.json(), asyncWrap(postEntry));
 

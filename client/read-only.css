@@ -2,18 +2,19 @@ html {
   zoom: 90%;
 }
 
-/* style table */
+/* style tables */
 table {
   border-collapse: collapse;
   max-width: 100%;
   width: 100%;
+  
 }
 
 th, td {
   text-align: left;
   padding: 8px;
   border-bottom: 1px solid #ddd;
-  max-width: 130px; 
+  max-width: 200px; 
   word-wrap: break-word; 
 }
 
@@ -23,26 +24,19 @@ th {
   color: white;
 }
 
-/* cursor style for label*/
+
+/* cursor style for label */
 label {
   cursor: pointer;
 }
 
-/* style for print */
-@media print {
-  /* hides elements with no-print class */
-  .no-print {
-    display: none;
-  }
+@page {
+  margin: 3cm;
 }
 
-/* adjusts font size for mobiles*/
+/* adjusts font size for mobiles */
 @media (max-width: 480px) {
   th, td {
     font-size: 14px;
   }
-}
-
-@page {
-  margin: 3cm;
 }
