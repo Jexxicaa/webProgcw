@@ -5,6 +5,16 @@ function init() {
   loadEntries(); // Load existing entries
 }
 
+// a scroller function to scroll to the add entry form if the table is long
+function scrollToEntryButton() {
+  const scrollToEntryButton = document.getElementById('scrollToEntryButton');
+  scrollToEntryButton.addEventListener('click', () => {
+    const entrySection = document.getElementById('new-entry-form');
+    entrySection.scrollIntoView({ behavior: 'smooth' });
+  });
+}
+
+
 function showEntries(entries, where) {
   // Show entries in a table with rows
   for (const entry of entries) {
@@ -269,3 +279,6 @@ async function sendNewEntry(row, date, work, knowledge, competencies) {
 
 
 init(); // Initialise the app
+
+// call the scroller function
+scrollToEntryButton();
