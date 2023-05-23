@@ -23,6 +23,8 @@ function gettheentries (req,res){
 // Route to add a new entry
 app.post('/entries', express.json(), asyncWrap(postEntry));
 
+app.put('/entries/:rowIndex', express.json(), asyncWrap(putEntry));
+
 
 //POST to take whats on client and send to server
 async function postEntry(req, res) {
@@ -30,6 +32,16 @@ async function postEntry(req, res) {
   const entry = await ent.addToArray( date, work, knowledge, competencies ); // Add the entry to ent
   res.json(entry);// Send added entry as JSON
 }
+
+async function putEntry(req, res) {
+  const { date, work, knowledge, competencies } = req.body;
+  const entry = await ent.updateToArray(rowIndex, date, work, knowledge, competencies);
+  res.json(entry);
+}
+
+
+
+
 
 // Wrap to handle async route handlers
 function asyncWrap(f) {
