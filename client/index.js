@@ -136,8 +136,7 @@ async function saveEntry(saveButton, editForm, sub, row) {
 
   await sendNewEntry(row, date, work, knowledge, competencies);
 
-    // Reload entries to update the table
-    loadEntries();
+
 }
 
 function deleteEntry(entry) {

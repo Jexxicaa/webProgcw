@@ -41,10 +41,10 @@ export function updateToArray(row, date, work, knowledge, competencies) {
   }
   
 
-async function writeToDisk() {
-    // Append updated array to JSON file
-      await fs.appendFile('entries.json', entries);
-}
+  async function writeToDisk() {
+    await fs.writeFile('entries.json', JSON.stringify(entries));
+  }
+  
   
 
 writeToDisk(); // Write the entries to disk

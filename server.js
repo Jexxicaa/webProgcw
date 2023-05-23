@@ -35,6 +35,7 @@ async function postEntry(req, res) {
 
 
 async function putEntry(req, res) {
+  const rowIndex = req.params.rowIndex; // Retrieve the rowIndex from route parameters
   const { date, work, knowledge, competencies } = req.body;
   const entry = await ent.updateToArray(rowIndex, date, work, knowledge, competencies);
   res.json(entry);
