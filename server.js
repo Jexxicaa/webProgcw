@@ -42,7 +42,6 @@ async function putEntry(req, res) {
 }
 
 
-
 // Wrap to handle async route handlers
 function asyncWrap(f) {
   return (req, res, next) => {
