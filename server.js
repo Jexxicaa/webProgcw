@@ -33,13 +33,12 @@ async function postEntry(req, res) {
   res.json(entry);// Send added entry as JSON
 }
 
+
 async function putEntry(req, res) {
   const { date, work, knowledge, competencies } = req.body;
   const entry = await ent.updateToArray(rowIndex, date, work, knowledge, competencies);
   res.json(entry);
 }
-
-
 
 
 
