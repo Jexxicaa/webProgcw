@@ -102,7 +102,7 @@ function addEntry(event) {
   document.querySelector("#new-entry-form").reset();
 }
 
-function saveEntry(saveButton, editForm, sub, row) {
+async function saveEntry(saveButton, editForm, sub, row) {
   // Get input values from form
   const date = document.querySelector("#date-input").value;
   const work = document.querySelector("#work-input").value;
@@ -130,6 +130,11 @@ function saveEntry(saveButton, editForm, sub, row) {
   // Reset heading to original
   const heading = document.querySelector("#heading");
   heading.textContent = "Input Data:";
+
+  await sendNewEntry(row, date, work, knowledge, competencies);
+
+    // Reload entries to update the table
+    loadEntries();
 }
 
 function deleteEntry(entry) {
@@ -204,8 +209,11 @@ function editTable(date, work, knowledge, competencies) {
     editEntry(entry, row);
   });
   editCell.appendChild(editButton);
+
+
   return { editCell, editButton, row };
 }
+
 
 //Use fetch to post a JSON message to the server 
 async function sendEntries(date, work, knowledge, competencies) {
@@ -229,5 +237,33 @@ async function sendEntries(date, work, knowledge, competencies) {
     console.log("Failed to send entries", response);
   }
 }
+
+
+async function sendNewEntry(row, date, work, knowledge, competencies) {
+  const rowIndex = row.getAttribute("data-index");
+
+  const payload = {
+    date: date,
+    work: work,
+    knowledge: knowledge,
+    competencies: competencies,
+  };
+  console.log("Payload", payload);
+
+  const response = await fetch(`/entries/${rowIndex}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+
+  if (response.ok) {
+    console.log("It's ok");
+  } else {
+    console.log('Failed to send entry', response);
+  }
+}
+
+
+
 
 init(); // Initialise the app
