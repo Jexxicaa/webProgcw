@@ -122,6 +122,9 @@ function saveEntry(saveButton, editForm, sub, row) {
   knowledgeCell.textContent = knowledge;
   competencyCell.textContent = competencies;
 
+  // Send the entries to the server for saving
+  sendEntries(date, work, knowledge, competencies);
+
   // Reset form
   document.querySelector("#new-entry-form").reset();
   saveButton.remove();

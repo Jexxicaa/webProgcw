@@ -31,6 +31,11 @@ async function postEntry(req, res) {
   res.json(entry);// Send added entry as JSON
 }
 
+//PUT to take edited on client and send to server
+async function putEntry(req,res){
+  const  
+}
+
 // Wrap to handle async route handlers
 function asyncWrap(f) {
   return (req, res, next) => {
