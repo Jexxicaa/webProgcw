@@ -1,42 +1,69 @@
+/* General Styles */
 html {
   zoom: 90%;
+  background-color: #F5F7F6;
 }
 
-/* style tables */
+body {
+  color: #333333;
+}
+
+/* Header Styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Table Styles */
 table {
   border-collapse: collapse;
   max-width: 100%;
   width: 100%;
-  
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: #F2F2F2;
 }
 
 th, td {
-  text-align: left;
-  padding: 8px;
-  border-bottom: 1px solid #ddd;
-  max-width: 200px; 
-  word-wrap: break-word; 
+  text-align: center;
+  padding: 6px;
+  max-width: 120px; 
+  word-wrap: break-word;
 }
 
-/* style headers */
 th {
-  background-color: #c357e4;
-  color: white;
+  background-color: #78A5A3;
+  color: #FFFFFF;
+  border-bottom: 1px dotted #000000;
 }
 
+/* Dotted Lines between Rows */
+tr:not(:last-child) {
+  border-bottom: 1px dotted #000000;
+}
 
-/* cursor style for label */
+/* Label Styles */
 label {
   cursor: pointer;
 }
 
-@page {
-  margin: 3cm;
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none;
+  }
 }
 
-/* adjusts font size for mobiles */
+/* Mobile Styles */
 @media (max-width: 480px) {
   th, td {
-    font-size: 14px;
+    font-size: 16px;
   }
+}
+
+/* Page Settings for Printing */
+@page {
+  margin: 2cm;
 }

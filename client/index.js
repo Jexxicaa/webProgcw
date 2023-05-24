@@ -14,6 +14,14 @@ function scrollToEntryButton() {
   });
 }
 
+// display a random motivational quote at the top of the page
+function randomQuote (){
+  //let quoteList = ["The future belongs to those who believe in the beauty of their dreams.", "Success is not final, failure is not fatal: It is the courage to continue that counts.", "Education is the most powerful weapon which you can use to change the world."];
+  let quote = document.getElementById("quote");
+  let random = Math.floor(Math.random() * quoteList.length);
+  quote.textContent = quoteList[random];
+}
+
 function showEntries(entries, where) {
   // Show entries in a table with rows
   for (const entry of entries) {
@@ -32,32 +40,30 @@ function showEntries(entries, where) {
     competencyCell.textContent = entry.competencies;
 
     // Create the edit button and adds an event listener
-    const editCell = document.createElement("td");
+    const toolCell = document.createElement("td");
     const editButton = document.createElement("button");
     editButton.textContent = "Edit";
-    editButton.classList.add("no-print");
+    editButton.classList.add("no-print", "tool-button");
     editButton.addEventListener("click", () => {
       editEntry(entry, row);
     });
-    editCell.appendChild(editButton);
+    toolCell.appendChild(editButton);
 
     // Create the delete button and adds an event listener
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Delete";
-    deleteButton.classList.add("no-print"); //makes sure its not printed
+    deleteButton.classList.add("no-print", "tool-button"); //makes sure its not printed
     deleteButton.addEventListener("click", () => {
       deleteEntry(entry);
     });
-    const deleteCell = document.createElement("td");
-    deleteCell.appendChild(deleteButton);
+    toolCell.appendChild(deleteButton);
 
     // Append cells to the row
     row.appendChild(dateCell);
     row.appendChild(workCell);
     row.appendChild(knowledgeCell);
     row.appendChild(competencyCell);
-    row.appendChild(editCell);
-    row.appendChild(deleteCell);
+    row.appendChild(toolCell);
 
     // Makes sure it adds it to the correct row
     where.appendChild(row);
@@ -247,7 +253,6 @@ function editTable(date, work, knowledge, competencies) {
   return { editCell, editButton, row };
 }
 
-
 //Use fetch to post a JSON message to the server 
 async function sendEntries(date, work, knowledge, competencies) {
   const payload = { // Create payload object with the entry data
@@ -310,3 +315,4 @@ async function sendNewEntry(entry, date, work, knowledge, competencies) {
 
 init(); // Initialise the app
 scrollToEntryButton();
+randomQuote ();
