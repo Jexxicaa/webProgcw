@@ -1,6 +1,17 @@
-/* General Styles */
 html {
   zoom: 90%;
+  background-color: #F5F7F6;
+}
+
+body {
+  color: #333333;
+}
+
+/* Header Styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* Table Styles */
@@ -8,6 +19,9 @@ table {
   border-collapse: collapse;
   max-width: 100%;
   width: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: #F2F2F2;
 }
 
 th, td {
@@ -18,8 +32,14 @@ th, td {
 }
 
 th {
-  background-color: #c357e4;
-  color: white;
+  background-color: #78A5A3;
+  color: #FFFFFF;
+  border-bottom: 1px dotted #000000;
+}
+
+/* Dotted Lines between Rows */
+tr:not(:last-child) {
+  border-bottom: 1px dotted #000000;
 }
 
 /* Label Styles */
@@ -27,7 +47,43 @@ label {
   cursor: pointer;
 }
 
-/* style for print */
+.tool-button {
+  background-color: #547980;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.tool-button:hover {
+background-color: #6F8FAF;
+}
+
+.button {
+  background-color: #FF8C61;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #FFB59E;
+}
+
+#quote {
+  color: #333333; /* Dark gray color */
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  font-style: italic;
+}
+
+/* Print Styles */
 @media print {
   .no-print {
     display: none;
