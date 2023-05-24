@@ -14,13 +14,12 @@ function scrollToEntryButton() {
   });
 }
 
-
 function showEntries(entries, where) {
   // Show entries in a table with rows
   for (const entry of entries) {
     const row = document.createElement("tr");
 
-    // Makes tghe cells
+    // Makes the cells
     const dateCell = document.createElement("td");
     const workCell = document.createElement("td");
     const knowledgeCell = document.createElement("td");
@@ -63,7 +62,6 @@ function showEntries(entries, where) {
     // Makes sure it adds it to the correct row
     where.appendChild(row);
 
-    
     entry.row = row;
   }
 }
@@ -112,7 +110,7 @@ function addEntry(event) {
   document.querySelector("#new-entry-form").reset();
 }
 
-async function saveEntry(saveButton, editForm, sub, row) {
+async function saveEntry(saveButton, editForm, sub, row, entry) {
   // Get input values from form
   const date = document.querySelector("#date-input").value;
   const work = document.querySelector("#work-input").value;
@@ -120,6 +118,8 @@ async function saveEntry(saveButton, editForm, sub, row) {
   const competencies = Array.from(
     document.querySelectorAll('input[name="competency"]:checked')
   ).map((checkbox) => checkbox.value).join(", ");
+
+  console.log(entry)
 
   // Update table row with new entries
   const dateCell = row.cells[0];
@@ -133,7 +133,7 @@ async function saveEntry(saveButton, editForm, sub, row) {
   competencyCell.textContent = competencies;
 
   // Send the entries to the server for saving
-  sendEntries(date, work, knowledge, competencies);
+  // await sendEntries(date, work, knowledge, competencies);
 
   // Reset form
   document.querySelector("#new-entry-form").reset();
@@ -144,16 +144,37 @@ async function saveEntry(saveButton, editForm, sub, row) {
   const heading = document.querySelector("#heading");
   heading.textContent = "Input Data:";
 
-  await sendNewEntry(row, date, work, knowledge, competencies);
-
+  await sendNewEntry(entry, date, work, knowledge, competencies);
 
 }
 
-function deleteEntry(entry) {
+async function deleteEntry(entry) {
   // Delete entry row from the table
   const row = entry.row;
   row.parentNode.removeChild(row);
+
+  const delrow = {
+    date : entry.date,
+    work : entry.work,
+    knowledge : entry.knowledge,
+    competencies : entry.competencies,
+  };
+  
+  const response = await fetch('http://localhost:8080/entries/delete', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(delrow),
+  });
+
+  console.log(delrow)
+  if (response.ok) { // Check the request was successful
+    console.log("It's ok");
+  } else {
+    console.log("Failed to delete", response);
+  };
+
 }
+
 
 function editEntry(entry, row) {
   // Fill the form with the prior entry for editing
@@ -177,7 +198,7 @@ function editEntry(entry, row) {
   // Remove submit button and add a event listener for save changes
   const { saveButton, editForm, sub } = removeSubmit();
   saveButton.addEventListener("click", () => {
-    saveEntry(saveButton, editForm, sub, row);
+    saveEntry(saveButton, editForm, sub, row, entry);
     document.querySelector("#new-entry-form").reset();
   });
 }
@@ -251,18 +272,27 @@ async function sendEntries(date, work, knowledge, competencies) {
 }
 
 
-async function sendNewEntry(row, date, work, knowledge, competencies) {
-  const rowIndex = row.getAttribute("data-index");
+async function sendNewEntry(entry, date, work, knowledge, competencies) {
+  //const rowIndex = row.getAttribute("data-index");
+
+  const oldrow = {
+    date : entry.date,
+    work : entry.work,
+    knowledge : entry.knowledge,
+    competencies : entry.competencies,
+  };
+  // delete oldrow.row
 
   const payload = {
-    date: date,
-    work: work,
-    knowledge: knowledge,
-    competencies: competencies,
+    row: oldrow,
+    date,
+    work,
+    knowledge,
+    competencies,
   };
   console.log("Payload", payload);
 
-  const response = await fetch(`/entries/${rowIndex}`, {
+  const response = await fetch(`/entries/${1}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
@@ -279,6 +309,4 @@ async function sendNewEntry(row, date, work, knowledge, competencies) {
 
 
 init(); // Initialise the app
-
-// call the scroller function
 scrollToEntryButton();

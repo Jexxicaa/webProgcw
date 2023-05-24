@@ -25,6 +25,8 @@ app.post('/entries', express.json(), asyncWrap(postEntry));
 
 app.put('/entries/:rowIndex', express.json(), asyncWrap(putEntry));
 
+app.post('/entries/delete', express.json(), asyncWrap(deleteEntry));
+
 
 //POST to take whats on client and send to server
 async function postEntry(req, res) {
@@ -33,12 +35,16 @@ async function postEntry(req, res) {
   res.json(entry);// Send added entry as JSON
 }
 
-
 async function putEntry(req, res) {
-  const rowIndex = req.params.rowIndex; // Retrieve the rowIndex from route parameters
-  const { date, work, knowledge, competencies } = req.body;
-  const entry = await ent.updateToArray(rowIndex, date, work, knowledge, competencies);
+  const { row, date, work, knowledge, competencies } = req.body;
+  const entry = await ent.updateToArray(row, date, work, knowledge, competencies);
   res.json(entry);
+}
+
+async function deleteEntry(req, res) {
+  const row = req.body;
+  ent.deleteEntry(row);
+  res.status(200).send("Code deleted");
 }
 
 
@@ -49,4 +55,3 @@ function asyncWrap(f) {
       .catch((e) => next(e || new Error()));
   };
 }
-

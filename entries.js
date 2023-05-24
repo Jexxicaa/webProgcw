@@ -13,18 +13,34 @@ export function getAllEntries (){
 }
 
 export function findEntry(row) {
+  row = JSON.stringify(row)
     for (const entry of entries) {
-      if (entry.row === row) {
+      if (JSON.stringify(entry) === row) {
         return entry;
       }
     }
     return null;
   }
 
+export function deleteEntry(row) {
+  row = JSON.stringify(row)
+  let entry
+    for (let i = 0; i < entries.length; i++) {
+      entry = entries[i];
+      if (JSON.stringify(entry) === row) {
+        entries.splice(i, 2)
+        writeToDisk()
+        return true;
+      }
+    }
+    return null;
+  }
+
+
 export function addToArray (date, work, knowledge, competencies){
     // Add a entry to array
     entries.push({date,work,knowledge,competencies});
-    
+    writeToDisk(); // Write the entries to disk
 }
 
 export function updateToArray(row, date, work, knowledge, competencies) {
@@ -37,14 +53,13 @@ export function updateToArray(row, date, work, knowledge, competencies) {
     storedEntry.knowledge = knowledge;
     storedEntry.competencies = competencies;
   
+    writeToDisk(); // Write the entries to disk
+
     return storedEntry;
   }
   
 
-  async function writeToDisk() {
-    await fs.writeFile('entries.json', JSON.stringify(entries));
-  }
+async function writeToDisk() {
+  await fs.writeFile('entries.json', JSON.stringify(entries));
+}
   
-  
-
-writeToDisk(); // Write the entries to disk
