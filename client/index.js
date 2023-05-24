@@ -32,14 +32,14 @@ function showEntries(entries, where) {
     competencyCell.textContent = entry.competencies;
 
     // Create the edit button and adds an event listener
-    const editCell = document.createElement("td");
+    const toolCell = document.createElement("td");
     const editButton = document.createElement("button");
     editButton.textContent = "Edit";
     editButton.classList.add("no-print");
     editButton.addEventListener("click", () => {
       editEntry(entry, row);
     });
-    editCell.appendChild(editButton);
+    toolCell.appendChild(editButton);
 
     // Create the delete button and adds an event listener
     const deleteButton = document.createElement("button");
@@ -48,16 +48,14 @@ function showEntries(entries, where) {
     deleteButton.addEventListener("click", () => {
       deleteEntry(entry);
     });
-    const deleteCell = document.createElement("td");
-    deleteCell.appendChild(deleteButton);
+    toolCell.appendChild(deleteButton);
 
     // Append cells to the row
     row.appendChild(dateCell);
     row.appendChild(workCell);
     row.appendChild(knowledgeCell);
     row.appendChild(competencyCell);
-    row.appendChild(editCell);
-    row.appendChild(deleteCell);
+    row.appendChild(toolCell);
 
     // Makes sure it adds it to the correct row
     where.appendChild(row);

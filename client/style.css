@@ -1,48 +1,79 @@
 html {
   zoom: 90%;
+  background-color: #f5f2b9;
 }
 
-/* style table */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Table Styles */
 table {
   border-collapse: collapse;
   max-width: 100%;
   width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px #000000;
 }
 
 th, td {
-  text-align: left;
-  padding: 8px;
-  border-bottom: 1px solid #ddd;
-  max-width: 130px; 
-  word-wrap: break-word; 
+  text-align: center;
+  padding: 6px;
+  max-width: 120px; 
+  word-wrap: break-word;
 }
 
-/* style headers */
 th {
-  background-color: #c357e4;
-  color: white;
+  background-color: #de9ff1;
+  color: #000000;
+  border-bottom: 1px dotted #000000;
 }
 
-/* cursor style for label*/
+/* Rounded Corners for Table Cells */
+th:first-child, td:first-child {
+  border-top-left-radius: 10px;
+}
+
+th:last-child, td:last-child {
+  border-top-right-radius: 10px;
+}
+
+td:last-child {
+  border-bottom-right-radius: 10px;
+}
+
+td:first-child {
+  border-bottom-left-radius: 10px;
+}
+
+/* Dotted Lines between Rows */
+tr:not(:last-child) {
+  border-bottom: 1px dotted #000000;
+}
+
+/* Label Styles */
 label {
   cursor: pointer;
 }
 
-/* style for print */
+/* Print Styles */
 @media print {
-  /* hides elements with no-print class */
   .no-print {
     display: none;
   }
 }
 
-/* adjusts font size for mobiles*/
+/* Mobile Styles */
 @media (max-width: 480px) {
   th, td {
-    font-size: 14px;
+    font-size: 16px;
   }
 }
 
+/* Page Settings for Printing */
 @page {
   margin: 3cm;
 }
