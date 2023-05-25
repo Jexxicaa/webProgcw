@@ -1,11 +1,12 @@
 html {
-  zoom: 90%;
   background-color: #F5F7F6;
 }
 
 body {
   color: #333333;
   font-family: "Times New Roman", Times, serif;
+  margin: 0;
+  padding: 0;
 }
 
 /* Header styles */
@@ -13,6 +14,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 10px;
 }
 
 /* Table styles */
@@ -49,6 +51,7 @@ label {
   cursor: pointer;
 }
 
+/* Button styles */
 .tool-button {
   background-color: #547980;
   color: #FFFFFF;
@@ -75,7 +78,7 @@ label {
 .button:hover {
   background-color: #FFB59E;
 }
-
+/* Quote styles */
 #quote {
   font-size: 20px;
   font-weight: bold;
@@ -83,7 +86,7 @@ label {
   text-align: center;
   font-style: italic;
 }
-
+/* Dropdown styles */
 #dropdown {
   padding: 8px;
   font-size: 14px;
@@ -95,14 +98,86 @@ label {
 #new-entry-form {
   background-color: #E8F1F2;
   border-radius: 15px;
+  padding: 20px;
 }
 
-#output{
+#output {
   font-size: 20px;
 }
 
-#heading{
+#heading {
   font-size: 25px;
+}
+
+/* ToDo styles */
+.toDo {
+  width: 100%;
+  background: #E8F1F2;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-sizing: border-box;
+}
+
+.toDo h2 {
+  color: #002765;
+  margin-bottom: 20px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 4px;
+  padding-left: 20px;
+  margin-bottom: 25px;
+}
+
+input[type="text"],
+input[type="date"] {
+  flex: 1;
+  border: none;
+  outline: none;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 14px;
+}
+
+ul {
+  padding-left: 0;
+}
+
+ul li {
+  list-style: none;
+  font-size: 17px;
+  padding: 12px 8px 12px 50px;
+  user-select: none;
+  cursor: pointer;
+  text-align: left;
+  position: relative;
+}
+
+ul li.checked {
+  color: #555;
+  text-decoration: line-through;
+}
+
+ul li span {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  font-size: 22px;
+  color: #242424;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50px;
+}
+
+ul li span:hover {
+  background: #a3ccc2;
 }
 
 /* Print Styles */
@@ -118,9 +193,10 @@ label {
   td {
     font-size: 16px;
   }
-}
 
-/* Page Settings for Printing */
-@page {
-  margin: 2cm;
+  .toDo {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
 }

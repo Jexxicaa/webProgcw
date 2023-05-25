@@ -43,6 +43,33 @@ let dropdown = document.getElementById('dropdown');
 dropdown.addEventListener('blur', clearDescription); //disappears when the user clicks off the drop down /description
 
 
+//To-Do List make input box
+const inputBox = document.getElementById("input-box");
+const listContainer = document.getElementById("list-container");
+
+//function to add task to the list
+function addTask(){
+  let li = document.createElement("li");
+  li.textContent = inputBox.value;
+  listContainer.appendChild(li);
+  // add cross icon
+  let span = document.createElement("span");
+  span.textContent = "\u00d7"; //creates a cross icon
+  li.appendChild(span);
+  inputBox.value = "";
+  
+}
+
+listContainer.addEventListener("click", function(e) {
+  if (e.target.tagName === "LI") {//if clicked entry, strike through the entry
+    e.target.classList.toggle("checked");
+  } else if (e.target.tagName === "SPAN") { //if clicked cross, remove the entry
+    e.target.parentElement.remove();
+  }
+});
+
+
+
 function showEntries(entries, where) {
   // Show entries in a table with rows
   for (const entry of entries) {
@@ -236,6 +263,7 @@ function removeSubmit() {
   sub.remove();
   const editForm = document.querySelector("#editForm");
   const saveButton = document.createElement("button");
+  saveButton.classList.add("button");
   saveButton.textContent = "Save Changes";
   editForm.appendChild(saveButton);
   return { saveButton, editForm, sub };

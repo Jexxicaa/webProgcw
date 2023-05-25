@@ -13,24 +13,24 @@ export function getAllEntries (){
 }
 
 export function findEntry(row) {
-  row = JSON.stringify(row)
+  row = JSON.stringify(row);
     for (const entry of entries) {
-      if (JSON.stringify(entry) === row) {
+      if (JSON.stringify(entry) === row) { // Return the entry if it matches the given row
         return entry;
       }
     }
-    return null;
+    return null; // Return null if no matching entry is found
   }
 
 export function deleteEntry(row) {
-  row = JSON.stringify(row)
-  let entry
+  row = JSON.stringify(row);
+  let entry;
     for (let i = 0; i < entries.length; i++) {
       entry = entries[i];
       if (JSON.stringify(entry) === row) {
-        entries.splice(i, 2)
-        writeToDisk()
-        return true;
+        entries.splice(i, 2); // Remove the matching entry from the array
+        writeToDisk(); // Write the updated entries to disk
+        return true; // Return true to indicate successful deletion
       }
     }
     return null;

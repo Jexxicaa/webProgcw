@@ -22,9 +22,9 @@ function gettheentries (req,res){
 
 // Route to add a new entry
 app.post('/entries', express.json(), asyncWrap(postEntry));
-
+// Route to edit a entry
 app.put('/entries/:rowIndex', express.json(), asyncWrap(putEntry));
-
+// Route to delete a entry
 app.post('/entries/delete', express.json(), asyncWrap(deleteEntry));
 
 
@@ -35,12 +35,14 @@ async function postEntry(req, res) {
   res.json(entry);// Send added entry as JSON
 }
 
+//put function to update when editing
 async function putEntry(req, res) {
   const { row, date, work, knowledge, competencies } = req.body;
   const entry = await ent.updateToArray(row, date, work, knowledge, competencies);
   res.json(entry);
 }
 
+//function to call deleteEntry
 async function deleteEntry(req, res) {
   const row = req.body;
   ent.deleteEntry(row);

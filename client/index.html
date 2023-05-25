@@ -16,7 +16,7 @@
     <button class="button" id="scrollToEntryButton">Click here to scroll to input form</button> 
   </div>
 
-  <div id="quote"></div> <!-- ID for random quotes generator -->
+  <div id="quote" class="no-print"></div> <!-- ID for random quotes generator -->
   <script src="arrays.js"></script>
 
   <table id="diary">   <!-- Table for the diary entries -->
@@ -32,8 +32,6 @@
   <tbody id="entries"></tbody>
   </table>
 
-
-  
   <h2 id="heading" class="no-print">Input data:</h2>
   <form id="new-entry-form" class="no-print">  <!-- Form for making a new entry (hidden when print) -->
     <b><label for="date-input">Date:</label></b>
@@ -95,6 +93,8 @@
 
   <div id="editForm"></div> <!-- where the edit form will go (dynamic) -->
 
+  <!-- competency dropbox-->
+<div class="no-print">
 <div id = "competency-Description">
   <h3 id="heading" >Competency Code Definitions: </h3>
   <select id="dropdown" onchange="selectOption()">
@@ -119,6 +119,18 @@
   </select>
   <br><br>
   <div id="output"></div>
+</div>
+<!-- To do list-->
+<h2 id="heading">To-Do List: </h2>
+<div class = "toDo">
+  <div class = "row">
+    <input type="text" id="input-box" placeholder="Please type here...">
+    <button class="button" onclick="addTask()">Add</button> <!-- on click call addTask function-->
+  </div>
+  <ul id="list-container">
+    <!-- list items-->
+  </ul>
+</div> 
 </div>
 
 </body>
