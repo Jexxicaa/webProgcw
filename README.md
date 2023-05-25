@@ -14,7 +14,9 @@ These are all the core features i have implemented into my code:
 - Ability to delete an entry:
 
 To display data entries in a table, simply fill out the form by either navigating to it or selecting the 'Click to scroll to input form' button. => You can fill out the date, work, knowledge and competencies. => Press Submit => The data is then loaded and saved to the table
+
 To edit or delete a entry in the table, click the 'Edit' or 'Delete' Buttons on the row you wish to remove. If the edit button is clicked, the form will change to accomodate this request. => You can then fill out the date, work,knowledge and competencies. => Press Save Entry => The data is then loaded and saved to the table
+
 If the delete button is pressed, the row will be immediately removed from the table and JSON file.
 
 - Mobile-responsive design to allow viewing on differnt devices:
