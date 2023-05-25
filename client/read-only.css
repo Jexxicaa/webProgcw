@@ -1,4 +1,3 @@
-/* General Styles */
 html {
   zoom: 90%;
   background-color: #F5F7F6;
@@ -6,48 +5,66 @@ html {
 
 body {
   color: #333333;
+  font-family: "Times New Roman", Times, serif;
 }
 
-/* Header Styles */
+/* Header styles */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* Table Styles */
+/* Table styles */
 table {
   border-collapse: collapse;
   max-width: 100%;
   width: 100%;
   border-radius: 15px;
   overflow: hidden;
-  background-color: #F2F2F2;
+  background-color: #E8F1F2;
 }
 
-th, td {
+th,
+td {
   text-align: center;
   padding: 6px;
-  max-width: 120px; 
+  max-width: 120px;
   word-wrap: break-word;
 }
 
 th {
-  background-color: #78A5A3;
+  background-color: #547980;
   color: #FFFFFF;
   border-bottom: 1px dotted #000000;
 }
 
-/* Dotted Lines between Rows */
+/* Dotted lines between rows */
 tr:not(:last-child) {
   border-bottom: 1px dotted #000000;
 }
 
-/* Label Styles */
+/* Label styles */
 label {
   cursor: pointer;
 }
 
+
+#dropdown {
+  padding: 8px;
+  font-size: 14px;
+  width: 200px;
+  border-radius: 4px;
+  background-color: #E8F1F2;
+}
+
+#heading{
+  font-size: 25px;
+}
+
+#output{
+  font-size: 20px;
+}
 
 /* Print Styles */
 @media print {
@@ -58,7 +75,8 @@ label {
 
 /* Mobile Styles */
 @media (max-width: 480px) {
-  th, td {
+  th,
+  td {
     font-size: 16px;
   }
 }

@@ -5,44 +5,46 @@ html {
 
 body {
   color: #333333;
+  font-family: "Times New Roman", Times, serif;
 }
 
-/* Header Styles */
+/* Header styles */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* Table Styles */
+/* Table styles */
 table {
   border-collapse: collapse;
   max-width: 100%;
   width: 100%;
   border-radius: 15px;
   overflow: hidden;
-  background-color: #F2F2F2;
+  background-color: #E8F1F2;
 }
 
-th, td {
+th,
+td {
   text-align: center;
   padding: 6px;
-  max-width: 120px; 
+  max-width: 120px;
   word-wrap: break-word;
 }
 
 th {
-  background-color: #78A5A3;
+  background-color: #547980;
   color: #FFFFFF;
   border-bottom: 1px dotted #000000;
 }
 
-/* Dotted Lines between Rows */
+/* Dotted lines between rows */
 tr:not(:last-child) {
   border-bottom: 1px dotted #000000;
 }
 
-/* Label Styles */
+/* Label styles */
 label {
   cursor: pointer;
 }
@@ -58,7 +60,7 @@ label {
 }
 
 .tool-button:hover {
-background-color: #6F8FAF;
+  background-color: #6F8FAF;
 }
 
 .button {
@@ -75,12 +77,32 @@ background-color: #6F8FAF;
 }
 
 #quote {
-  color: #333333; 
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 20px;
   text-align: center;
   font-style: italic;
+}
+
+#dropdown {
+  padding: 8px;
+  font-size: 14px;
+  width: 200px;
+  border-radius: 4px;
+  background-color: #E8F1F2;
+}
+
+#new-entry-form {
+  background-color: #E8F1F2;
+  border-radius: 15px;
+}
+
+#output{
+  font-size: 20px;
+}
+
+#heading{
+  font-size: 25px;
 }
 
 /* Print Styles */
@@ -92,7 +114,8 @@ background-color: #6F8FAF;
 
 /* Mobile Styles */
 @media (max-width: 480px) {
-  th, td {
+  th,
+  td {
     font-size: 16px;
   }
 }

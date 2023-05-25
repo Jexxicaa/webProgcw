@@ -16,11 +16,32 @@ function scrollToEntryButton() {
 
 // display a random motivational quote at the top of the page
 function randomQuote (){
-  //let quoteList = ["The future belongs to those who believe in the beauty of their dreams.", "Success is not final, failure is not fatal: It is the courage to continue that counts.", "Education is the most powerful weapon which you can use to change the world."];
   let quote = document.getElementById("quote");
   let random = Math.floor(Math.random() * quoteList.length);
   quote.textContent = quoteList[random];
 }
+
+//functionality for competencies drop down
+function selectOption() {
+  let dropdown = document.getElementById('dropdown');
+  let output = document.getElementById('output');
+  let selectedIndex = dropdown.selectedIndex;
+  let selectedDescription = competencyDescriptions[selectedIndex - 1];
+  output.textContent = selectedDescription;
+
+}
+
+//clears the drop down and puts it back to the first ID which is select a competency...
+function clearDescription() {
+  let dropdown = document.getElementById('dropdown');
+  let output = document.getElementById('output');
+  dropdown.selectedIndex = 0; 
+  output.textContent = "";
+}
+
+let dropdown = document.getElementById('dropdown');
+dropdown.addEventListener('blur', clearDescription); //disappears when the user clicks off the drop down /description
+
 
 function showEntries(entries, where) {
   // Show entries in a table with rows
@@ -316,3 +337,4 @@ async function sendNewEntry(entry, date, work, knowledge, competencies) {
 init(); // Initialise the app
 scrollToEntryButton();
 randomQuote ();
+clearDescription();

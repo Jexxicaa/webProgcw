@@ -30,5 +30,27 @@ async function fetchEntries() {
 
 }
 
+//functionality for competencies drop down
+function selectOption() {
+  let dropdown = document.getElementById('dropdown');
+  let output = document.getElementById('output');
+  let selectedIndex = dropdown.selectedIndex;
+  let selectedDescription = competencyDescriptions[selectedIndex - 1];
+  output.textContent = selectedDescription;
+
+}
+
+//clears the drop down and puts it back to the first ID which is select a competency...
+function clearDescription() {
+  let dropdown = document.getElementById('dropdown');
+  let output = document.getElementById('output');
+  dropdown.selectedIndex = 0; 
+  output.textContent = "";
+}
+
+let dropdown = document.getElementById('dropdown');
+dropdown.addEventListener('blur', clearDescription); //disappears when the user clicks off the drop down /description
+
+
 // Call fetchEntries function to get and show entries
 fetchEntries();
